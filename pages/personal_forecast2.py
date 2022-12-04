@@ -61,23 +61,23 @@ def app():
         lr_predict = lr.predict(x_test)
         lr_predict_proba = lr.predict_proba(x_test)
         if get_target_type(lr_predict) == 'AD Dementia':
-            st.subheader('AD Dementia')
+            st.subheader('阿尔兹海默症型痴呆')
             st.subheader('患病几率为：')
-            st.subheader(max("{:.18f}".format(float(lr_predict_proba.tolist()[0][0])),
-                             "{:.18f}".format(float(lr_predict_proba.tolist()[0][1])),
-                             "{:.18f}".format(float(lr_predict_proba.tolist()[0][2]))))
+            st.subheader(max("{:.4f}".format(float(lr_predict_proba.tolist()[0][0])),
+                             "{:.4f}".format(float(lr_predict_proba.tolist()[0][1])),
+                             "{:.4f}".format(float(lr_predict_proba.tolist()[0][2]))))
         if get_target_type(lr_predict) == 'uncertain dementia':
-            st.subheader('uncertain dementia')
+            st.subheader('其他痴呆类型')
             st.subheader('患病几率为：')
-            st.subheader(max("{:.18f}".format(float(lr_predict_proba.tolist()[0][0])),
-                             "{:.18f}".format(float(lr_predict_proba.tolist()[0][1])),
-                             "{:.18f}".format(float(lr_predict_proba.tolist()[0][2]))))
+            st.subheader(max("{:.4f}".format(float(lr_predict_proba.tolist()[0][0])),
+                             "{:.4f}".format(float(lr_predict_proba.tolist()[0][1])),
+                             "{:.4f}".format(float(lr_predict_proba.tolist()[0][2]))))
             if get_target_type(lr_predict) == 'No dementia':
-                st.subheader('No dementia')
+                st.subheader('没有罹患痴呆')
                 st.subheader('几率为：')
-                st.subheader(max("{:.18f}".format(float(lr_predict_proba.tolist()[0][0])),
-                                 "{:.18f}".format(float(lr_predict_proba.tolist()[0][1])),
-                                 "{:.18f}".format(float(lr_predict_proba.tolist()[0][2]))))
+                st.subheader(max("{:.4f}".format(float(lr_predict_proba.tolist()[0][0])),
+                                 "{:.4f}".format(float(lr_predict_proba.tolist()[0][1])),
+                                 "{:.4f}".format(float(lr_predict_proba.tolist()[0][2]))))
         st.write("数据来自 ADNI阿尔茨海默症权威数据中心的临床数据集")
 
 
